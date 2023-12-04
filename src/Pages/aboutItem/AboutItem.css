@@ -1,0 +1,106 @@
+.aboutItem{
+    flex: 4;
+    width: max-content;
+    padding: 20px;
+}
+
+.aboutItemTitleContainer{
+    margin-bottom: 10px;
+}
+
+.aboutItemContainer{
+    display: flex;
+    width: 100%;
+}
+
+.aboutItemLeft{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-right: 20px;
+    border-radius: 8px;
+    background-color: rgb(235, 235, 235);
+    box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+    -webkit-box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+    -moz-box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+    padding: 20px;
+}
+
+.aboutItemInfoItem{
+    margin-bottom: 20px;
+}
+
+.aboutItemInfoKey{
+    font-weight: 700;
+}
+
+.aboutitemImg{
+    margin-top: 10px;
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+}
+
+.aboutItemRight{
+    width: 50%;
+    margin-left: 20px;
+    border-radius: 8px;
+    background-color: rgb(235, 235, 235);
+    box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+    -webkit-box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+    -moz-box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+    padding: 20px;
+}
+
+.aboutItemForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.aboutItemFormInputs{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.aboutItemFormInputs > label{
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.aboutItemFormInputs > input{
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    outline: none;
+}
+
+.aboutItemFormInputs > textarea{
+    border: none;
+    padding: 5px;
+    border-radius: 8px;
+    outline: none;
+}
+
+.aboutItemButton{
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: darkblue;
+    color: rgb(238, 238, 238);
+    font-weight: 600;
+    transition: all 300ms;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.aboutItemButton:hover{
+    background-color: rgb(33, 33, 143);
+    color: white;
+}

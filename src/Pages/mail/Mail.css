@@ -1,0 +1,264 @@
+.post{
+    width: max-content;
+    flex: 4;
+    padding: 20px;
+}
+
+.postTitleContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    height: 10%;
+}
+
+.postTitleContainer > h1{
+    color: var(--primary-color-dark);
+}
+
+.postContainer{
+    display: flex;
+    width: 100%;
+    height: 90%;
+}
+
+.addPostButton{
+    width: 80px;
+    border: none;
+    padding: 5px;
+    background-color: teal;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    transition: all 200ms;
+}
+
+.addPostButton:hover{
+    background-color: rgb(22, 155, 155);
+}
+
+.postLeft{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-right: 20px;
+    border-radius: 8px;
+    background-color: rgb(235, 235, 235);
+    box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+    -webkit-box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+    -moz-box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+    padding: 20px;
+}
+
+.postInfoItem{
+    margin-bottom: 20px;
+}
+
+.postInfoKey{
+    font-weight: 700;
+}
+
+.postInfoValue.img{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.postImg{
+    margin-top: 10px;
+    object-fit: cover;
+    /* width: calc(100% / 3); */
+    height: 100px;
+    border-radius: 8px;
+}
+
+.postImg.cimage{
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.postRight{
+    width: 50%;
+    margin-left: 20px;
+    border-radius: 8px;
+    background-color: rgb(235, 235, 235);
+    box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+    -webkit-box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+    -moz-box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+    padding: 20px;
+}
+
+.postForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.postFormInputs{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.postFormInputs > label{
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.postFormInputs > input{
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    outline: none;
+}
+
+.postFormInputs > textarea{
+    border: none;
+    padding: 5px;
+    border-radius: 8px;
+    outline: none;
+}
+
+.postButton{
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: darkblue;
+    color: rgb(238, 238, 238);
+    font-weight: 600;
+    transition: all 300ms;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.postButton:hover{
+    background-color: rgb(33, 33, 143);
+    color: white;
+}
+
+/* .productTop{
+    display: flex;
+}
+
+.productTopLeft, .productTopRight{
+    flex: 1;
+}
+
+.productTopRight{
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+    -webkit-box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+    -moz-box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+}
+
+.productInfoImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.productInfoTop{
+    display: flex;
+    align-items: center;
+}
+
+.productName{
+    margin-left: 20px;
+    font-weight: 600;
+}
+
+.productInfoBottom{
+    margin-top: 10px;
+}
+
+.productInfoItem{
+    width: 800px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.productInfoValue{
+    margin-left: 30px;
+    font-weight: 300;
+}
+
+.productBottom{
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+    -webkit-box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+    -moz-box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+}
+
+.productForm{
+    display: flex;
+    justify-content: space-between;
+}
+
+.productFormLeft{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.productFormLeft>label{
+    margin-bottom: 10px;
+    color: gray;
+}
+
+.productFormLeft>input{
+    margin-bottom: 10px;
+    border: none;
+    padding: 5px;
+    border-bottom: 1px solid gray;
+}
+
+.productFormLeft>select{
+    margin-bottom: 10px;
+}
+
+.productUploadImg{
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.productFormRight{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.productUpload{
+    display: flex;
+    align-items: center;
+}
+
+.productButton{
+    border: none;
+    padding: 7px 10px;
+    border-radius: 5px;
+    background-color: darkblue;
+    color: rgb(238, 238, 238);
+    font-weight: 600;
+    transition: all 300ms;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.productButton:hover{
+    background-color: rgb(33, 33, 143);
+    color: white;
+} */

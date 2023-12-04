@@ -1,0 +1,27 @@
+.home{
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeImg{
+    height: 200px;
+    width: 200px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.homeTitle{
+    font-size: 3rem;
+}
+
+.homeSubTitle{
+    font-size: 1.5rem;
+    margin-top: 40px;
+}
+
+.homeSubTitle > a{
+    text-decoration: none;
+}

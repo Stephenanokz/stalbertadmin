@@ -1,0 +1,63 @@
+.newPost{
+    width: max-content;
+    flex: 4;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.addPostForm{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(235, 235, 235);
+    box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+    -webkit-box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+    -moz-box-shadow: 0px 0px 10px -3px rgba(0,0,0,.75);
+}
+
+.addPostFormInputs{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.addPostFormInputs > label{
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.addPostFormInputs > input{
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    outline: none;
+}
+
+.addPostFormInputs > textarea{
+    border: none;
+    padding: 5px;
+    border-radius: 8px;
+    outline: none;
+}
+
+.newPostButton{
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: darkblue;
+    color: rgb(238, 238, 238);
+    font-weight: 600;
+    transition: all 300ms;
+    cursor: pointer;
+    width: 100px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.newPostButton:hover{
+    background-color: rgb(33, 33, 143);
+    color: white;
+}
