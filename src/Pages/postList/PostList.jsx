@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./PostList.css";
 import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@mui/icons-material";
@@ -13,8 +13,15 @@ import {
 const PostList = () => {
   const { posts, dispatch } = useContext(PostContext);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
-    getPostsCall(dispatch);
+    const fetch = async () => {
+      setIsLoading(true);
+      await getPostsCall(dispatch);
+      setIsLoading(false);
+    };
+    fetch();
   }, [dispatch]);
 
   const deleteHandler = (id) => {
@@ -64,7 +71,7 @@ const PostList = () => {
     },
   ];
 
-  return !posts ? (
+  return isLoading ? (
     <div className="loading">Loading...</div>
   ) : (
     <div className="productList">

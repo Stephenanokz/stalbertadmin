@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./AchievementList.css";
 import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@mui/icons-material";
@@ -11,9 +11,16 @@ import {
 
 const AchievementList = () => {
   const { achievements, dispatch } = useContext(AchievementContext);
+  
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    getAchievementsCall(dispatch);
+    const fetch = async () => {
+      setIsLoading(true);
+      await getAchievementsCall(dispatch);
+      setIsLoading(false);
+    };
+    fetch();
   }, [dispatch]);
 
   const deleteHandler = (id) => {
@@ -63,7 +70,7 @@ const AchievementList = () => {
     },
   ];
 
-  return !achievements ? (
+  return isLoading ? (
     <div className="loading">Loading...</div>
   ) : (
     <div className="productList">

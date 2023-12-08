@@ -75,8 +75,8 @@ html{
     justify-content: center;
     align-items: center;
     font-size: var(--big-font-size);
-    font-family: var(--serif-family);
-    font-weight: var(--font-semi-bold);
+    font-family: var(--sans-family);
+    font-weight: var(--font-medium);
     color: var(--primary-color-dark);
 }
 
@@ -93,7 +93,7 @@ html{
     align-items: center;
     background-color: hsla(0, 0%, 0%, 0.778);
     font-size: var(--h2-font-size);
-    font-family: var(--serif-family);
+    font-family: var(--sans-family);
     font-weight: var(--font-medium);
     color: var(--gray-100);
     text-shadow: 2px 2px 4px var(--black-dark);

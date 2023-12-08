@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./PersonnelList.css";
 import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@mui/icons-material";
@@ -13,8 +13,15 @@ import {
 const PersonnelList = () => {
   const { personnels, dispatch } = useContext(PersonnelContext);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
-    getPersonnelsCall(dispatch);
+    const fetch = async () => {
+      setIsLoading(true);
+      await getPersonnelsCall(dispatch);
+      setIsLoading(false);
+    };
+    fetch();
   }, [dispatch]);
 
   const deleteHandler = (id) => {
@@ -64,7 +71,7 @@ const PersonnelList = () => {
     },
   ];
 
-  return !personnels ? (
+  return isLoading ? (
     <div className="loading">Loading...</div>
   ) : (
     <div className="productList">

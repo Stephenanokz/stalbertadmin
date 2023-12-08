@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MailList.css";
 import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@mui/icons-material";
@@ -12,9 +12,16 @@ import {
 
 const MailList = () => {
   const { mails, dispatch } = useContext(MailContext);
+  
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    getMailsCall(dispatch);
+    const fetch = async () => {
+      setIsLoading(true);
+      await getMailsCall(dispatch);
+      setIsLoading(false);
+    };
+    fetch();
   }, [dispatch]);
 
   const deleteHandler = (id) => {
@@ -54,7 +61,7 @@ const MailList = () => {
     },
   ];
 
-  return !mails ? (
+  return isLoading ? (
     <div className="loading">Loading...</div>
   ) : (
     <div className="productList">

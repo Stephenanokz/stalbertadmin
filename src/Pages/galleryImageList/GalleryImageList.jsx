@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./GalleryImageList.css";
 import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@mui/icons-material";
@@ -13,8 +13,15 @@ import {
 const GalleryImageList = () => {
   const { galleryImages, dispatch } = useContext(GalleryImageContext);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
-    getGalleryImagesCall(dispatch);
+    const fetch = async () => {
+      setIsLoading(true);
+      await getGalleryImagesCall(dispatch);
+      setIsLoading(false);
+    };
+    fetch();
   }, [dispatch]);
 
   const deleteHandler = (id) => {
@@ -64,7 +71,7 @@ const GalleryImageList = () => {
     },
   ];
 
-  return !galleryImages ? (
+  return isLoading ? (
     <div className="loading">Loading...</div>
   ) : (
     <div className="productList">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CarouselImageList.css";
 import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@mui/icons-material";
@@ -13,8 +13,15 @@ import {
 const CarouselImageList = () => {
   const { carouselImages, dispatch } = useContext(CarouselImageContext);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
-    getCarouselImagesCall(dispatch);
+    const fetch = async () => {
+      setIsLoading(true);
+      await getCarouselImagesCall(dispatch);
+      setIsLoading(false);
+    };
+    fetch();
   }, [dispatch]);
 
   const deleteHandler = (id) => {
@@ -64,7 +71,7 @@ const CarouselImageList = () => {
     },
   ];
 
-  return !carouselImages ? (
+  return isLoading ? (
     <div className="loading">Loading...</div>
   ) : (
     <div className="productList">
