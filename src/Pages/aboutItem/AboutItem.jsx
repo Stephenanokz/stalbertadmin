@@ -350,7 +350,7 @@ const AboutItem = () => {
                 name="welcomeText"
                 onChange={handleChange}
               />
-              <label for="schoolImage">School Image</label>
+              <label htmlFor="schoolImage">School Image</label>
               <input
                 type="file"
                 id="schoolImage"
@@ -364,7 +364,7 @@ const AboutItem = () => {
                 name="principalQuote"
                 onChange={handleChange}
               />
-              <label for="principalImgHome">Principal Image</label>
+              <label htmlFor="principalImgHome">Principal Image</label>
               <input
                 type="file"
                 id="principalImgHome"
@@ -388,7 +388,7 @@ const AboutItem = () => {
                 rows="10"
                 onChange={handleChange}
               ></textarea>
-              <label for="principalImgAbout">Principal Image</label>
+              <label htmlFor="principalImgAbout">Principal Image</label>
               <input
                 type="file"
                 id="principalImgAbout"
@@ -409,21 +409,21 @@ const AboutItem = () => {
                 name="principalTitle"
                 onChange={handleChange}
               />
-              <label for="schoolImageLg">School Image (Large)</label>
+              <label htmlFor="schoolImageLg">School Image (Large)</label>
               <input
                 type="file"
                 id="schoolImageLg"
                 name="schoolImageLg"
                 onChange={handleChooseSchoolImageLg}
               />
-              <label for="schoolImageSmT">School Image (Small 01)</label>
+              <label htmlFor="schoolImageSmT">School Image (Small 01)</label>
               <input
                 type="file"
                 id="schoolImageSmT"
                 name="schoolImageSmT"
                 onChange={handleChooseSchoolImageSmT}
               />
-              <label for="schoolImageSmB">School Image (Small 02)</label>
+              <label htmlFor="schoolImageSmB">School Image (Small 02)</label>
               <input
                 type="file"
                 id="schoolImageSmB"
@@ -446,7 +446,7 @@ const AboutItem = () => {
                 name="mission"
                 onChange={handleChange}
               />
-              <label for="missionImg">Mission Image</label>
+              <label htmlFor="missionImg">Mission Image</label>
               <input
                 type="file"
                 id="missionImg"
@@ -460,7 +460,7 @@ const AboutItem = () => {
                 name="vision"
                 onChange={handleChange}
               />
-              <label for="visionImg">Vision Image</label>
+              <label htmlFor="visionImg">Vision Image</label>
               <input
                 type="file"
                 id="visionImg"
