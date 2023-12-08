@@ -64,7 +64,7 @@ const GalleryImageList = () => {
     },
   ];
 
-  return !galleryImages.length > 0 ? (
+  return !galleryImages ? (
     <div className="loading">Loading...</div>
   ) : (
     <div className="productList">
@@ -75,15 +75,24 @@ const GalleryImageList = () => {
         </Link>
       </div>
       <div className="table">
-        <DataGrid
-          rows={galleryImages}
-          columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
-          disableSelectionOnClick
-          getRowId={(r) => r._id}
-        />
+        {galleryImages.length == 0 ? (
+          <div className="notFound">
+            <span>No image found!</span>
+            <Link to="/newgalleryimage">
+              <button className="addPostButton">Create new</button>
+            </Link>
+          </div>
+        ) : (
+          <DataGrid
+            rows={galleryImages}
+            columns={columns}
+            pageSize={10}
+            rowsPerPageOptions={[5]}
+            checkboxSelection
+            disableSelectionOnClick
+            getRowId={(r) => r._id}
+          />
+        )}
       </div>
     </div>
   );

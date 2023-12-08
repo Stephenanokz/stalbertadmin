@@ -32,7 +32,17 @@ const AboutItem = () => {
   const [isDone, setIsDone] = useState(false);
   const [uploaded, setUploaded] = useState(0);
   const [isUploading, setIsUploading] = useState(false);
-  const [img, setImg] = useState(null);
+
+  const [schoolImage, setSchoolImage] = useState(null);
+  const [principalImgHome, setPrincipalImgHome] = useState(null);
+  const [principalImgAbout, setPrincipalImgAbout] = useState(null);
+  const [schoolImageLg, setSchoolImageLg] = useState(null);
+  const [schoolImageSmT, setSchoolImageSmT] = useState(null);
+  const [schoolImageSmB, setSchoolImageSmB] = useState(null);
+  const [missionImg, setMissionImg] = useState(null);
+  const [visionImg, setVisionImg] = useState(null);
+
+  const [imageChosen, setImageChosen] = useState(false);
 
   const handleChange = (e) => {
     firstLoad = false;
@@ -48,9 +58,73 @@ const AboutItem = () => {
     });
   };
 
-  const handleChooseImage = (e) => {
+  const handleChooseSchoolImage = (e) => {
     firstLoad = false;
-    setImg(e.target.files[0]);
+    setSchoolImage(e.target.files[0]);
+    setImageChosen(true);
+    setUpdatedAboutItem({
+      ...updatedAboutItem,
+    });
+  };
+
+  const handleChoosePrincipalImgHome = (e) => {
+    firstLoad = false;
+    setPrincipalImgHome(e.target.files[0]);
+    setImageChosen(true);
+    setUpdatedAboutItem({
+      ...updatedAboutItem,
+    });
+  };
+
+  const handleChoosePrincipalImgAbout = (e) => {
+    firstLoad = false;
+    setPrincipalImgAbout(e.target.files[0]);
+    setImageChosen(true);
+    setUpdatedAboutItem({
+      ...updatedAboutItem,
+    });
+  };
+
+  const handleChooseSchoolImageLg = (e) => {
+    firstLoad = false;
+    setSchoolImageLg(e.target.files[0]);
+    setImageChosen(true);
+    setUpdatedAboutItem({
+      ...updatedAboutItem,
+    });
+  };
+
+  const handleChooseSchoolImageSmT = (e) => {
+    firstLoad = false;
+    setSchoolImageSmT(e.target.files[0]);
+    setImageChosen(true);
+    setUpdatedAboutItem({
+      ...updatedAboutItem,
+    });
+  };
+
+  const handleChooseSchoolImageSmB = (e) => {
+    firstLoad = false;
+    setSchoolImageSmB(e.target.files[0]);
+    setImageChosen(true);
+    setUpdatedAboutItem({
+      ...updatedAboutItem,
+    });
+  };
+
+  const handleChooseMissionImg = (e) => {
+    firstLoad = false;
+    setMissionImg(e.target.files[0]);
+    setImageChosen(true);
+    setUpdatedAboutItem({
+      ...updatedAboutItem,
+    });
+  };
+
+  const handleChooseVisionImg = (e) => {
+    firstLoad = false;
+    setVisionImg(e.target.files[0]);
+    setImageChosen(true);
     setUpdatedAboutItem({
       ...updatedAboutItem,
     });
@@ -59,6 +133,7 @@ const AboutItem = () => {
   const upload = (items) => {
     setIsUploading(true);
     items.forEach((item) => {
+      console.log(item)
       const fileName = new Date().getTime() + item.label + item.file.name;
       const storageRef = ref(storage, `/imgs/${fileName}`);
       const uploadTask = uploadBytesResumable(storageRef, item.file);
@@ -68,14 +143,14 @@ const AboutItem = () => {
           const progress = Math.floor(
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           );
-          // console.log("Upload is " + progress + "% completed.");
+          console.log("Upload is " + progress + "% completed.");
         },
         (error) => {
           console.log(error);
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            const imagePath = downloadURL.slice(75);
+            const imagePath = downloadURL.slice(38);
             const optimizedImgUrl = `${
               import.meta.env.VITE_IMAGEKIT_BASEURL
             }${imagePath}`;
@@ -92,7 +167,16 @@ const AboutItem = () => {
 
   const handleUpload = (e) => {
     e.preventDefault();
-    upload([{ file: img, label: "img" }]);
+    upload([
+      { file: schoolImage, label: "schoolImage" },
+      { file: principalImgHome, label: "principalImgHome" },
+      { file: principalImgAbout, label: "principalImgAbout" },
+      { file: schoolImageLg, label: "schoolImageLg" },
+      { file: schoolImageSmT, label: "schoolImageSmT" },
+      { file: schoolImageSmB, label: "schoolImageSmB" },
+      { file: missionImg, label: "missionImg" },
+      { file: visionImg, label: "visionImg" },
+    ]);
   };
 
   const handleSubmit = (e) => {
@@ -107,11 +191,15 @@ const AboutItem = () => {
     // getPostCall(params.postId, dispatch);
   };
 
-  return (
+  return !aboutItem ? (
+    <div className="loading">Loading...</div>
+  ) : (
     <div className="post">
       <div className="postTitleContainer">
         <h1 className="postTitle">School Info</h1>
       </div>
+      {isUploading && <div className="uploading">Uploading Image(s)...</div>}
+      {isDone && <div className="uploading">Updated!. Please refresh page</div>}
       <div className="postContainer">
         <div className="postLeft">
           <h2 className="groupTitle">Home Page Info</h2>
@@ -262,12 +350,26 @@ const AboutItem = () => {
                 name="welcomeText"
                 onChange={handleChange}
               />
+              <label for="schoolImage">School Image</label>
+              <input
+                type="file"
+                id="schoolImage"
+                name="schoolImage"
+                onChange={handleChooseSchoolImage}
+              />
               <label>Principal Quote</label>
               <input
                 type="text"
                 placeholder={foundAboutItem?.principalQuote}
                 name="principalQuote"
                 onChange={handleChange}
+              />
+              <label for="principalImgHome">Principal Image</label>
+              <input
+                type="file"
+                id="principalImgHome"
+                name="principalImgHome"
+                onChange={handleChoosePrincipalImgHome}
               />
               <label>Principal Title</label>
               <input
@@ -286,6 +388,13 @@ const AboutItem = () => {
                 rows="10"
                 onChange={handleChange}
               ></textarea>
+              <label for="principalImgAbout">Principal Image</label>
+              <input
+                type="file"
+                id="principalImgAbout"
+                name="principalImgAbout"
+                onChange={handleChoosePrincipalImgAbout}
+              />
               <label>Principal Name</label>
               <input
                 type="text"
@@ -299,6 +408,27 @@ const AboutItem = () => {
                 placeholder={foundAboutItem?.principalTitle}
                 name="principalTitle"
                 onChange={handleChange}
+              />
+              <label for="schoolImageLg">School Image (Large)</label>
+              <input
+                type="file"
+                id="schoolImageLg"
+                name="schoolImageLg"
+                onChange={handleChooseSchoolImageLg}
+              />
+              <label for="schoolImageSmT">School Image (Small 01)</label>
+              <input
+                type="file"
+                id="schoolImageSmT"
+                name="schoolImageSmT"
+                onChange={handleChooseSchoolImageSmT}
+              />
+              <label for="schoolImageSmB">School Image (Small 02)</label>
+              <input
+                type="file"
+                id="schoolImageSmB"
+                name="schoolImageSmB"
+                onChange={handleChooseSchoolImageSmB}
               />
               <label>School Description</label>
               <textarea
@@ -316,6 +446,13 @@ const AboutItem = () => {
                 name="mission"
                 onChange={handleChange}
               />
+              <label for="missionImg">Mission Image</label>
+              <input
+                type="file"
+                id="missionImg"
+                name="missionImg"
+                onChange={handleChooseMissionImg}
+              />
               <label>Vision</label>
               <input
                 type="text"
@@ -323,10 +460,23 @@ const AboutItem = () => {
                 name="vision"
                 onChange={handleChange}
               />
-              <label>Image</label>
-              <input type="file" id="img" name="img" />
+              <label for="visionImg">Vision Image</label>
+              <input
+                type="file"
+                id="visionImg"
+                name="visionImg"
+                onChange={handleChooseVisionImg}
+              />
             </div>
-            <button className="newPostButton">Upload</button>
+            {!imageChosen || uploaded >= 1 ? (
+              <button className="newPostButton" onClick={handleSubmit}>
+                Update
+              </button>
+            ) : (
+              <button className="newPostButton" onClick={handleUpload}>
+                Upload
+              </button>
+            )}
           </form>
         </div>
       </div>

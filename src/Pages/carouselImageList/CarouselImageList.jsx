@@ -64,7 +64,7 @@ const CarouselImageList = () => {
     },
   ];
 
-  return !carouselImages.length > 0 ? (
+  return !carouselImages ? (
     <div className="loading">Loading...</div>
   ) : (
     <div className="productList">
@@ -75,15 +75,24 @@ const CarouselImageList = () => {
         </Link>
       </div>
       <div className="table">
-        <DataGrid
-          rows={carouselImages}
-          columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
-          disableSelectionOnClick
-          getRowId={(r) => r._id}
-        />
+        {carouselImages.length == 0 ? (
+          <div className="notFound">
+            <span>No image found!</span>
+            <Link to="/newcarouselimage">
+              <button className="addPostButton">Create new</button>
+            </Link>
+          </div>
+        ) : (
+          <DataGrid
+            rows={carouselImages}
+            columns={columns}
+            pageSize={10}
+            rowsPerPageOptions={[5]}
+            checkboxSelection
+            disableSelectionOnClick
+            getRowId={(r) => r._id}
+          />
+        )}
       </div>
     </div>
   );

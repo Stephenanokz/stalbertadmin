@@ -63,7 +63,7 @@ const AchievementList = () => {
     },
   ];
 
-  return !achievements.length > 0 ? (
+  return !achievements ? (
     <div className="loading">Loading...</div>
   ) : (
     <div className="productList">
@@ -74,15 +74,24 @@ const AchievementList = () => {
         </Link>
       </div>
       <div className="table">
-        <DataGrid
-          rows={achievements}
-          columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
-          disableSelectionOnClick
-          getRowId={(r) => r._id}
-        />
+        {achievements.length == 0 ? (
+          <div className="notFound">
+            <span>No achievement found!</span>
+            <Link to="/newachievement">
+              <button className="addPostButton">Create new</button>
+            </Link>
+          </div>
+        ) : (
+          <DataGrid
+            rows={achievements}
+            columns={columns}
+            pageSize={10}
+            rowsPerPageOptions={[5]}
+            checkboxSelection
+            disableSelectionOnClick
+            getRowId={(r) => r._id}
+          />
+        )}
       </div>
     </div>
   );

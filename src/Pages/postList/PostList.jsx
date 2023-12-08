@@ -64,7 +64,7 @@ const PostList = () => {
     },
   ];
 
-  return !posts.length > 0 ? (
+  return !posts ? (
     <div className="loading">Loading...</div>
   ) : (
     <div className="productList">
@@ -75,15 +75,24 @@ const PostList = () => {
         </Link>
       </div>
       <div className="table">
-        <DataGrid
-          rows={posts}
-          columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
-          disableSelectionOnClick
-          getRowId={(r) => r._id}
-        />
+        {posts.length == 0 ? (
+          <div className="notFound">
+            <span>No news found!</span>
+            <Link to="/newpost">
+              <button className="addPostButton">Create post</button>
+            </Link>
+          </div>
+        ) : (
+          <DataGrid
+            rows={posts}
+            columns={columns}
+            pageSize={10}
+            rowsPerPageOptions={[5]}
+            checkboxSelection
+            disableSelectionOnClick
+            getRowId={(r) => r._id}
+          />
+        )}
       </div>
     </div>
   );

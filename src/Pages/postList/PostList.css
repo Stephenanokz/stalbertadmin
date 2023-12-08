@@ -13,6 +13,20 @@
     align-items: center;
 }
 
+.notFound{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 50px;
+}
+
+.notFound span{
+    font-weight: var(--font-medium);
+    font-size: var(--h1-font-size);
+}
+
 .productListImage{
     width: 32px;
     height: 32px;

@@ -64,26 +64,35 @@ const PersonnelList = () => {
     },
   ];
 
-  return !personnels.length > 0 ? (
+  return !personnels ? (
     <div className="loading">Loading...</div>
   ) : (
     <div className="productList">
       <div className="postTitleContainer">
-        <h1 className="postTitle">Gallery Images</h1>
+        <h1 className="postTitle">Personnels</h1>
         <Link to="/newpersonnel">
           <button className="addPostButton">Create</button>
         </Link>
       </div>
       <div className="table">
-        <DataGrid
-          rows={personnels}
-          columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
-          disableSelectionOnClick
-          getRowId={(r) => r._id}
-        />
+        {personnels.length == 0 ? (
+          <div className="notFound">
+            <span>No personnel found!</span>
+            <Link to="/newpersonnel">
+              <button className="addPostButton">Create new</button>
+            </Link>
+          </div>
+        ) : (
+          <DataGrid
+            rows={personnels}
+            columns={columns}
+            pageSize={10}
+            rowsPerPageOptions={[5]}
+            checkboxSelection
+            disableSelectionOnClick
+            getRowId={(r) => r._id}
+          />
+        )}
       </div>
     </div>
   );

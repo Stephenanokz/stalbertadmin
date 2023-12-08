@@ -54,7 +54,7 @@ const MailList = () => {
     },
   ];
 
-  return !mails.length > 0 ? (
+  return !mails ? (
     <div className="loading">Loading...</div>
   ) : (
     <div className="productList">
@@ -62,15 +62,21 @@ const MailList = () => {
         <h1 className="postTitle">Contact Mails</h1>
       </div>
       <div className="table">
-        <DataGrid
-          rows={mails}
-          columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
-          disableSelectionOnClick
-          getRowId={(r) => r._id}
-        />
+        {mails.length == 0 ? (
+          <div className="notFound">
+            <span>No contact mail found!</span>
+          </div>
+        ) : (
+          <DataGrid
+            rows={mails}
+            columns={columns}
+            pageSize={10}
+            rowsPerPageOptions={[5]}
+            checkboxSelection
+            disableSelectionOnClick
+            getRowId={(r) => r._id}
+          />
+        )}
       </div>
     </div>
   );
