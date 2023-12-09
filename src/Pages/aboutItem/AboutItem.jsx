@@ -21,7 +21,7 @@ const AboutItem = () => {
     getAboutItemCall(params.aboutId, dispatch);
   }, [dispatch]);
 
-  console.log(aboutItem);
+  // console.log(aboutItem);
 
   let [updatedAboutItem, setUpdatedAboutItem] = useState([]);
   if (aboutItem && firstLoad) {
@@ -60,7 +60,10 @@ const AboutItem = () => {
 
   const handleChooseSchoolImage = (e) => {
     firstLoad = false;
-    setSchoolImage(e.target.files[0]);
+    const file = e.target.files[0];
+    setSchoolImage((prev) => {
+      return file;
+    });
     setImageChosen(true);
     setUpdatedAboutItem({
       ...updatedAboutItem,
@@ -69,7 +72,10 @@ const AboutItem = () => {
 
   const handleChoosePrincipalImgHome = (e) => {
     firstLoad = false;
-    setPrincipalImgHome(e.target.files[0]);
+    const file = e.target.files[0];
+    setPrincipalImgHome((prev) => {
+      return file;
+    });
     setImageChosen(true);
     setUpdatedAboutItem({
       ...updatedAboutItem,
@@ -78,7 +84,10 @@ const AboutItem = () => {
 
   const handleChoosePrincipalImgAbout = (e) => {
     firstLoad = false;
-    setPrincipalImgAbout(e.target.files[0]);
+    const file = e.target.files[0];
+    setPrincipalImgAbout((prev) => {
+      return file;
+    });
     setImageChosen(true);
     setUpdatedAboutItem({
       ...updatedAboutItem,
@@ -87,7 +96,10 @@ const AboutItem = () => {
 
   const handleChooseSchoolImageLg = (e) => {
     firstLoad = false;
-    setSchoolImageLg(e.target.files[0]);
+    const file = e.target.files[0];
+    setSchoolImageLg((prev) => {
+      return file;
+    });
     setImageChosen(true);
     setUpdatedAboutItem({
       ...updatedAboutItem,
@@ -96,7 +108,10 @@ const AboutItem = () => {
 
   const handleChooseSchoolImageSmT = (e) => {
     firstLoad = false;
-    setSchoolImageSmT(e.target.files[0]);
+    const file = e.target.files[0];
+    setSchoolImageSmT((prev) => {
+      return file;
+    });
     setImageChosen(true);
     setUpdatedAboutItem({
       ...updatedAboutItem,
@@ -105,7 +120,10 @@ const AboutItem = () => {
 
   const handleChooseSchoolImageSmB = (e) => {
     firstLoad = false;
-    setSchoolImageSmB(e.target.files[0]);
+    const file = e.target.files[0];
+    setSchoolImageSmB((prev) => {
+      return file;
+    });
     setImageChosen(true);
     setUpdatedAboutItem({
       ...updatedAboutItem,
@@ -114,7 +132,10 @@ const AboutItem = () => {
 
   const handleChooseMissionImg = (e) => {
     firstLoad = false;
-    setMissionImg(e.target.files[0]);
+    const file = e.target.files[0];
+    setMissionImg((prev) => {
+      return file;
+    });
     setImageChosen(true);
     setUpdatedAboutItem({
       ...updatedAboutItem,
@@ -123,7 +144,10 @@ const AboutItem = () => {
 
   const handleChooseVisionImg = (e) => {
     firstLoad = false;
-    setVisionImg(e.target.files[0]);
+    const file = e.target.files[0];
+    setVisionImg((prev) => {
+      return file;
+    });
     setImageChosen(true);
     setUpdatedAboutItem({
       ...updatedAboutItem,
@@ -133,7 +157,8 @@ const AboutItem = () => {
   const upload = (items) => {
     setIsUploading(true);
     items.forEach((item) => {
-      console.log(item)
+      // console.log(item);
+      if (item.file == null) return;
       const fileName = new Date().getTime() + item.label + item.file.name;
       const storageRef = ref(storage, `/imgs/${fileName}`);
       const uploadTask = uploadBytesResumable(storageRef, item.file);
@@ -143,7 +168,7 @@ const AboutItem = () => {
           const progress = Math.floor(
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           );
-          console.log("Upload is " + progress + "% completed.");
+          // console.log("Upload is " + progress + "% completed.");
         },
         (error) => {
           console.log(error);
@@ -364,7 +389,7 @@ const AboutItem = () => {
                 name="principalQuote"
                 onChange={handleChange}
               />
-              <label htmlFor="principalImgHome">Principal Image</label>
+              <label htmlFor="principalImgHome">Principal Image (Orientation: Landscape)</label>
               <input
                 type="file"
                 id="principalImgHome"
@@ -388,7 +413,7 @@ const AboutItem = () => {
                 rows="10"
                 onChange={handleChange}
               ></textarea>
-              <label htmlFor="principalImgAbout">Principal Image</label>
+              <label htmlFor="principalImgAbout">Principal Image (Orientation: Portrait)</label>
               <input
                 type="file"
                 id="principalImgAbout"

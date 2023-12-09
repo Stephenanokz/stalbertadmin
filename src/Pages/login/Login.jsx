@@ -19,7 +19,7 @@ const Login = () => {
         <div className="loggingIn">Signing in, Please wait...</div>
       ) : (
         <form className="loginForm">
-          <img src="/img/logo.png" alt="" className="loginLogo" />
+          <img src="https://ik.imagekit.io/verbum0179/v0/b/stalbertschool-351e8.appspot.com/o/imgs%2Flogo.png?alt=media&token=7c76096a-f104-4dae-bf52-63ce4b8661f3" alt="" className="loginLogo" />
           {error && <h3 className="error">Wrong Username or Password</h3>}
           <h2 className="title">Login</h2>
           <input
